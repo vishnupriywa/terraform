@@ -142,7 +142,7 @@ resource "aws_autoscaling_group" "webserver-asg" {
   name = "webserver"
   max_size = "3"
   min_size = "1"
-  desired_capacity = "2"
+  desired_capacity = "1"
   launch_configuration = "${aws_launch_configuration.webserver.id}"
   availability_zones = [ "us-east-1a" ]
   default_cooldown = 300
