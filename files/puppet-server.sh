@@ -4,7 +4,8 @@ wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
 dpkg -i puppetlabs-release-pc1-xenial.deb
 apt-get update
 apt-get install puppetserver -y
-
+sed -i.bak "4i 172.31.0.10     puppet"  /etc/hosts
+sed -i.bak "5i 172.31.0.11     ubuntu-agent"  /etc/hosts
 
 echo "*" > /etc/puppetlabs/puppet/autosign.conf
 sed -i.bak '9d' /etc/default/puppetserver

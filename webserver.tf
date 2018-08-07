@@ -19,6 +19,17 @@ resource "aws_security_group" "webserver-sg" {
     cidr_blocks = ["0.0.0.0/0"]
 
 }
+
+ ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    self = true
+  security_groups = [
+    "${aws_security_group.puppet-sg.id}"
+
+  ]
+  }
   ingress {
     from_port = 443
     to_port = 443
@@ -105,7 +116,6 @@ EOF
 resource "aws_launch_configuration" "webserver" {
   image_id = "ami-759bc50a"
   instance_type = "t2.micro"
-  associate_public_ip_address = true
   ebs_optimized = false
   user_data = "${file("files/puppet-agent.sh")}"
   key_name = "webkey" # creating key before running terraform
@@ -187,5 +197,6 @@ resource "aws_elb" "webserver-lb" {
   ]
 
  # subnets = [ "Enter subnets here" ] # need changes here
+ availability_zones = [ "us-east-1a", "us-east-1b" ]
 
 }

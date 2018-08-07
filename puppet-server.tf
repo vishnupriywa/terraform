@@ -15,9 +15,10 @@ resource "aws_security_group" "puppet-sg" {
     to_port = 0
     protocol = "-1"
     self = true
-    security_groups = [
-      "${aws_security_group.webserver-sg.id}"
-    ]
+  security_groups = [
+    "${aws_security_group.webserver-sg.id}"
+    
+  ]
   }
 
   egress {
@@ -41,7 +42,7 @@ resource "aws_instance" "puppet-server" {
  # subnet_id = "" # enter subnet id here
   key_name = "webkey"
   user_data = "${file("files/puppet-server.sh")}"
-  security_groups = [
+  vpc_security_group_ids  = [
     "${aws_security_group.puppet-sg.id}"
     
   ]
