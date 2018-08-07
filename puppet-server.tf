@@ -43,7 +43,7 @@ resource "aws_instance" "puppet-server" {
   user_data = "${file("files/puppet-server.sh")}"
   security_groups = [
     "${aws_security_group.puppet-sg.id}"
-    "
+    
   ]
 
   root_block_device {
