@@ -1,0 +1,21 @@
+how to run this code
+
+1. install terraform on your local system
+
+2. after generate aws access and secret keys in AWS IAM console and note speratly and create a key pair in north virigia as 'webkey'
+
+3. run terraform init
+
+4. run terraform plan in terraform directory (same directory where this file lies)
+
+5. terraform will prompt for access key and secret paste them 
+
+6. after successful run we need to login into  server and client machines modify /etc/hosts file in both
+
+replace ips there note: for puppet enter puppetserver private ip,  ubuntu-agent enter webserver private ip and save file (do same in both machines)
+
+final step: login webserver machine and run this command
+
+sudo /opt/puppetlabs/puppet/bin/puppet agent --test --server puppet
+
+
