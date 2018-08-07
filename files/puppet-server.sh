@@ -5,8 +5,6 @@ dpkg -i puppetlabs-release-pc1-xenial.deb
 apt-get update
 apt-get install puppetserver -y
 
-sed -i.bak "4i 172.31.0.10     puppet"  /etc/hosts
-sed -i.bak "5i 172.31.0.11     ubuntu-agent"  /etc/hosts
 
 echo "*" > /etc/puppetlabs/puppet/autosign.conf
 sed -i.bak '9d' /etc/default/puppetserver
@@ -17,3 +15,9 @@ git clone https://github.com/vishnupriywa/puppetrepo.git
 cp -rfv puppetrepo/*   /etc/puppetlabs/code/environments/production/manifests/
 
 service puppetserver start
+
+# update /etc/hosts file with privates of pupper server and puppet gent like this
+# vi /etc/hosts
+# after after localhost
+# private ip address of puppetserver      puppet
+#private ip address of agent as           ubuntu-agent 

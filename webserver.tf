@@ -129,7 +129,7 @@ resource "aws_launch_configuration" "webserver" {
 }
 
 resource "aws_autoscaling_group" "webserver-asg" {
-  name = "webserver-autoscaling-group"
+  name = "webserver"
   max_size = "3"
   min_size = "1"
   desired_capacity = "2"
