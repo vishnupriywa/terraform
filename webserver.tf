@@ -3,7 +3,7 @@
 
 resource "aws_security_group" "webserver-sg" {
   name = "webserver-SG"
-  vpc_id = ""   # place a vpc id here
+#  vpc_id = ""   # place a vpc id here
 
   ingress {
     from_port = 80
@@ -13,9 +13,9 @@ resource "aws_security_group" "webserver-sg" {
   }
 
   ingress {
-    from_port = 0
-    to_port = 0
-    protocol = -1
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
 
 }
@@ -186,6 +186,6 @@ resource "aws_elb" "webserver-lb" {
     "${aws_security_group.webserver-sg.id}"
   ]
 
-  subnets = [ "Enter subnets here" ] # need changes here
+ # subnets = [ "Enter subnets here" ] # need changes here
 
 }

@@ -1,6 +1,6 @@
 resource "aws_security_group" "puppet-sg" {
   name = "puppet-sg"
-  vpc_id = "" # enter vpc id here
+#  vpc_id = "" # enter vpc id here
 
 
   ingress {
@@ -38,7 +38,7 @@ resource "aws_instance" "puppet-server" {
   instance_type = "t2.medium"
   associate_public_ip_address = true
   ebs_optimized = false
-  subnet_id = "" # enter subnet id here
+ # subnet_id = "" # enter subnet id here
   key_name = "webkey"
   user_data = "${file("files/puppet-server.sh")}"
   security_groups = [
